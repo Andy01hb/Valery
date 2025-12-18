@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Colores Mágicos 🪄🌈</title>
+
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Un viaje sensorial entre la magia de Hogwarts y el brillo de los Trolls.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="wand-loader"></div>
+        <p class="magic-text" style="font-size: 1rem; margin-top: 1.5rem; letter-spacing: 2px;">PREPARANDO EL HECHIZO...
+        </p>
+    </div>
+
+    <!-- Background Elements -->
+    <div id="main-canvas-bg"></div>
+    <div id="scroll-progress"></div>
+    <div id="cursor-glow"></div>
+    <canvas id="particle-canvas" style="position: fixed; inset: 0; pointer-events: none; z-index: -1;"></canvas>
+
+    <!-- Music Control -->
+    <div style="position: fixed; top: 2rem; right: 2rem; z-index: 1000;">
+        <button id="music-btn" class="glass-card"
+            style="padding: 12px 25px; border-radius: 50px; cursor: pointer; color: white; display: flex; align-items: center; gap: 10px;">
+            <span id="music-icon">🔊</span> <span
+                style="font-size: 0.8rem; letter-spacing: 1px; font-weight: 600;">MELODÍA</span>
+        </button>
+    </div>
+
+    <audio id="bg-music" loop preload="auto">
+        <!-- He cambiado el link a uno de prueba más estable. -->
+        <!-- RECOMENDACIÓN: Descarga "True Colors", pon el archivo en esta misma carpeta llamado "true_colors.mp3" y cambia el src abajo a "true_colors.mp3" para que siempre funcione. -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <main>
+        <!-- HERO: THE PORTAL -->
+        <section class="section-hero">
+            <div class="parallax-item" data-speed="0.2"
+                style="top: 15%; left: 10%; font-size: 4rem; filter: blur(2px);">⚡</div>
+            <div class="parallax-item" data-speed="0.4"
+                style="bottom: 20%; right: 15%; font-size: 3rem; filter: blur(1px);">✧</div>
+
+            <div class="reveal" style="text-align: center;">
+                <h1 class="magic-text" style="font-size: clamp(3rem, 10vw, 7rem); line-height: 0.9;">
+                    LA MAGIA<br>
+                    <span class="pop-text" style="font-size: 0.7em;">DE SER TÚ</span>
+                </h1>
+                <p style="margin-top: 2rem; letter-spacing: 3px; font-weight: 200; opacity: 0.7;">UN VIAJE A TRAVÉS DE
+                    NUESTROS COLORES</p>
+            </div>
+        </section>
+
+        <!-- VISUAL PAUSE 1 -->
+        <section style="min-height: 70vh;">
+            <div class="reveal poetic-quote">
+                "Incluso en los momentos más oscuros, la lealtad es la luz que nos guía a casa."
+            </div>
+        </section>
+
+        <!-- SECTION: RON (LOYALTY) -->
+        <section id="ron-world">
+            <div class="parallax-item" data-speed="0.3" style="top: 10%; right: 5%; opacity: 0.2;">
+                <img src="ron_bg.png" style="width: 40vw; border-radius: 100px; transform: rotate(5deg);">
+            </div>
+
+            <div class="glass-card reveal">
+                <h2 class="magic-text" style="font-size: 3.5rem; margin-bottom: 2rem;">Corazón de León</h2>
+                <p style="font-size: 1.2rem; font-weight: 300; line-height: 1.8;">
+                    Ron nos enseñó que no hace falta ser el 'elegido' para ser extraordinario. <br><br>
+                    Tu lealtad es mi magia favorita, esa que me hace sentir que siempre tengo un hogar, sin importar qué
+                    tan lejos estemos de Hogwarts.
+                </p>
+                <div
+                    style="margin-top: 3rem; font-family: var(--font-serif); color: var(--magic-gold); font-size: 1.5rem;">
+                    "Accio Felicidad"
+                </div>
+            </div>
+        </section>
+
+        <!-- VISUAL PAUSE 2 -->
+        <section style="min-height: 70vh;">
+            <div class="reveal poetic-quote" style="color: var(--pop-pink); text-shadow: 0 0 20px rgba(255,0,127,0.3);">
+                "Y de pronto, el mundo dejó de ser gris para llenarse de ti."
+            </div>
+        </section>
+
+        <!-- SECTION: RAMÓN (TRUE COLORS) -->
+        <section id="ramon-world">
+            <div class="parallax-item" data-speed="0.5" style="bottom: 15%; left: 5%; opacity: 0.3;">
+                <img src="ramon_bg.png" style="width: 35vw; border-radius: 100px; transform: rotate(-8deg);">
+            </div>
+
+            <div class="glass-card reveal" style="border-color: rgba(255, 0, 127, 0.2);">
+                <h2 class="pop-text" style="font-size: 4rem; margin-bottom: 2rem;">Tus Colores</h2>
+                <p style="font-size: 1.2rem; font-weight: 400; color: #fff;">
+                    Ramón encontró su color cuando dejó de tener miedo a brillar. <br><br>
+                    Tú eres esa canción que suena en mi cabeza cuando todo está en silencio, la que me recuerda que mis
+                    'colores verdaderos' son hermosos simplemente porque tú los ves.
+                </p>
+                <button class="pop-text" onclick="celebrate()"
+                    style="margin-top: 3rem; background: white; border: none; padding: 15px 40px; border-radius: 50px; color: black; cursor: pointer; font-size: 1.2rem;">
+                    ¡HORA DEL ABRAZO!
+                </button>
+            </div>
+        </section>
+
+        <!-- FINAL: OUR HISTORY -->
+        <section id="our-story">
+            <div class="reveal" style="text-align: center;">
+                <h2 class="magic-text" style="font-size: 3rem;">Nuestra Historia</h2>
+                <p class="poetic-quote" style="margin: 2rem 0; font-size: 1.8rem;">
+                    Más fuerte que un hechizo, <br> más brillante que un Arcoíris Pop.
+                </p>
+                <div class="glass-card" style="margin-top: 4rem; display: inline-block;">
+                    <p style="font-weight: 600; font-size: 1.5rem;">Te amo con toda mi alma. ❤️</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

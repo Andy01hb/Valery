@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Grenze+Gotisch:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;700&display=swap');
+
+:root {
+    /* Ron / Magic Palette */
+    --magic-deep: #0a0a0f;
+    --magic-gold: #D4AF37;
+    --magic-accent: #740001;
+    --clr-magic-accent: #f4a261;
+
+    /* Ramón / Pop Palette */
+    --pop-pink: #ff007f;
+    --pop-cyan: #00f2ff;
+    --pop-yellow: #fee440;
+    --pop-bg: #ff85a1;
+
+    /* Fonts */
+    --font-serif: 'Grenze Gotisch', serif;
+    --font-poetic: 'Playfair Display', serif;
+    --font-pop: 'Bubblegum Sans', cursive;
+    --font-base: 'Montserrat', sans-serif;
+
+    /* UI */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--magic-deep);
+    color: white;
+    font-family: var(--font-base);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wand-loader {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.wand-loader::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--magic-gold), transparent);
+    animation: load 2s infinite;
+}
+
+@keyframes load {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Background System */
+#main-canvas-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: var(--magic-deep);
+    transition: background 1s ease;
+}
+
+/* Cursor Glow */
+#cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+}
+
+/* Section Styling */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vw;
+    position: relative;
+    pointer-events: none;
+    /* Let background particles be visible */
+}
+
+section>* {
+    pointer-events: auto;
+    /* Re-enable for content */
+}
+
+/* Parallax Items */
+.parallax-item {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Typography */
+.magic-text {
+    font-family: var(--font-serif);
+    color: var(--magic-gold);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.pop-text {
+    font-family: var(--font-pop);
+    color: white;
+    text-shadow: 3px 3px 0px var(--pop-pink), -1px -1px 0px var(--pop-cyan);
+}
+
+.poetic-quote {
+    font-family: var(--font-poetic);
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-style: italic;
+    opacity: 0.8;
+    max-width: 80%;
+    text-align: center;
+}
+
+/* Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 4rem;
+    max-width: 800px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Organic Image Masks */
+.organic-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    mask-image: url('https://raw.githubusercontent.com/bennettfeely/images/master/mask.png');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+/* Custom Scroll Progress Bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--magic-gold), var(--pop-pink));
+    z-index: 10001;
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 2rem;
+    }
+
+    .poetic-quote {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 5vw;
+    }
+}
