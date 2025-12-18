@@ -209,11 +209,88 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 6. CELEBRATE (Confetti)
+    // 7. INTERACTIVE SFX & EFFECTS
+    window.playSfx = function (id) {
+        const sfx = document.getElementById(`sfx-${id}`);
+        if (sfx) {
+            sfx.currentTime = 0;
+            sfx.play().catch(e => console.log("SFX blocked by browser"));
+        }
+    };
+
+    window.castSpell = function (type) {
+        playSfx('magic');
+        playSfx('confetti');
+        playSfx('cheer');
+        const colors = {
+            'wingardium': ['#ffffff', '#D4AF37'],
+            'lumos': ['#ffffff', '#ffffcc'],
+            'alohomora': ['#D4AF37', '#664400']
+        };
+        confetti({
+            particleCount: 20,
+            spread: 50,
+            origin: { y: 0.6 },
+            colors: colors[type] || ['#ffffff']
+        });
+
+        gsap.fromTo(".charm", { scale: 1 }, { scale: 1.3, duration: 0.2, yoyo: true, repeat: 1 });
+    };
+
+    window.popEffect = function (emoji) {
+        playSfx('confetti');
+        const end = Date.now() + 400;
+        const colors = ['#ff007f', '#00f2ff', '#fee440', '#ff85a1'];
+
+        (function frame() {
+            confetti({
+                particleCount: 2,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: colors
+            });
+            confetti({
+                particleCount: 2,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: colors
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        }());
+    };
+
+    window.finalSurprise = function () {
+        playSfx('confetti'); // Solo confetti como pidió el usuario
+
+        confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.6 },
+            colors: ['#ff007f', '#D4AF37', '#ffffff', '#00f2ff']
+        });
+
+        gsap.to(".history-surprise", {
+            rotation: 720,
+            scale: 1.4,
+            duration: 1,
+            ease: "elastic.out(1, 0.3)"
+        });
+    };
+
+    // 6. CELEBRATE (Brillo Espontáneo: Fuegos Artificiales + Confetti + Aplausos)
     window.celebrate = function () {
-        const duration = 5 * 1000;
+        playSfx('firework');
+        playSfx('confetti');
+        playSfx('cheer');
+
+        const duration = 6 * 1000;
         const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+        const defaults = { startVelocity: 40, spread: 360, ticks: 100, zIndex: 0 };
 
         function randomInRange(min, max) {
             return Math.random() * (max - min) + min;
@@ -226,9 +303,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 return clearInterval(interval);
             }
 
-            const particleCount = 50 * (timeLeft / duration);
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+            const particleCount = 60 * (timeLeft / duration);
+            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.4), y: Math.random() - 0.2 } });
+            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.6, 0.9), y: Math.random() - 0.2 } });
+
+            // Fuego artificial extra al centro ocasional
+            if (Math.random() > 0.8) {
+                confetti({
+                    ...defaults,
+                    particleCount: 30,
+                    origin: { x: 0.5, y: 0.5 },
+                    gravity: 0.5,
+                    scalar: 2
+                });
+            }
         }, 250);
     };
 });

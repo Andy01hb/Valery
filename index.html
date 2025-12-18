@@ -42,6 +42,20 @@
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Sound Effects: Alta fidelidad, orgánicos y mágicos -->
+    <audio id="sfx-magic" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2555/2555-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-confetti" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2012/2012-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-cheer" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2805/2805-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-firework" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2162/2162-preview.mp3" type="audio/mpeg">
+    </audio>
+
     <main>
         <!-- HERO: THE PORTAL -->
         <section class="section-hero">
@@ -52,18 +66,25 @@
 
             <div class="reveal" style="text-align: center;">
                 <h1 class="magic-text" style="font-size: clamp(3rem, 10vw, 7rem); line-height: 0.9;">
-                    LA MAGIA<br>
-                    <span class="pop-text" style="font-size: 0.7em;">DE SER TÚ</span>
+                    ALMA DE<br>
+                    <span class="pop-text" style="font-size: 0.7em;">FANTASÍA</span>
                 </h1>
-                <p style="margin-top: 2rem; letter-spacing: 3px; font-weight: 200; opacity: 0.7;">UN VIAJE A TRAVÉS DE
-                    NUESTROS COLORES</p>
+                <p
+                    style="margin-top: 2rem; letter-spacing: 3px; font-weight: 200; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    PARA QUIEN ENCUENTRA MAGIA EN LO PEQUEÑO Y LLENA EL MUNDO DE MÚSICA SIN SIQUIERA INTENTARLO.
+                </p>
+                <div style="margin-top: 3rem;">
+                    <button class="magic-text" onclick="playSfx('magic')"
+                        style="background: none; border: 1px solid var(--magic-gold); color: var(--magic-gold); padding: 10px 25px; border-radius: 50px; cursor: pointer; letter-spacing: 2px; font-size: 0.8rem;">DESCUBRIR
+                        MAGIA</button>
+                </div>
             </div>
         </section>
 
         <!-- VISUAL PAUSE 1 -->
         <section style="min-height: 70vh;">
             <div class="reveal poetic-quote">
-                "Incluso en los momentos más oscuros, la lealtad es la luz que nos guía a casa."
+                "Tu locura es mi realidad favorita, y tu sensibilidad, el lenguaje con el que Dios me habla del amor."
             </div>
         </section>
 
@@ -74,15 +95,25 @@
             </div>
 
             <div class="glass-card reveal">
-                <h2 class="magic-text" style="font-size: 3.5rem; margin-bottom: 2rem;">Corazón de León</h2>
+                <h2 class="magic-text" style="font-size: 3.5rem; margin-bottom: 2rem;">Un Hechizo de Espontaneidad</h2>
+                <div class="charms-container"
+                    style="display: flex; gap: 20px; justify-content: center; margin-bottom: 2rem;">
+                    <div class="charm" onclick="castSpell('wingardium')" style="cursor: pointer; font-size: 2rem;">🪄
+                    </div>
+                    <div class="charm" onclick="castSpell('lumos')" style="cursor: pointer; font-size: 2rem;">💡</div>
+                    <div class="charm" onclick="castSpell('alohomora')" style="cursor: pointer; font-size: 2rem;">🗝️
+                    </div>
+                </div>
                 <p style="font-size: 1.2rem; font-weight: 300; line-height: 1.8;">
-                    Ron nos enseñó que no hace falta ser el 'elegido' para ser extraordinario. <br><br>
-                    Tu lealtad es mi magia favorita, esa que me hace sentir que siempre tengo un hogar, sin importar qué
-                    tan lejos estemos de Hogwarts.
+                    Ron nos enseñó que la lealtad es estar presente, pero tú me has enseñado que amar es <strong>soñar
+                        despierto</strong>. <br><br>
+                    Adoro cómo te emocionas por esas cosas "tontas" que para ti son tesoros. Ver el mundo a través de
+                    tus ojos artísticos y espirituales es como vivir en un musical constante donde la próxima sorpresa
+                    está a solo un suspiro de distancia.
                 </p>
                 <div
                     style="margin-top: 3rem; font-family: var(--font-serif); color: var(--magic-gold); font-size: 1.5rem;">
-                    "Accio Felicidad"
+                    "Gracias por ser mi Lumos en lo cotidiano."
                 </div>
             </div>
         </section>
@@ -90,7 +121,7 @@
         <!-- VISUAL PAUSE 2 -->
         <section style="min-height: 70vh;">
             <div class="reveal poetic-quote" style="color: var(--pop-pink); text-shadow: 0 0 20px rgba(255,0,127,0.3);">
-                "Y de pronto, el mundo dejó de ser gris para llenarse de ti."
+                "Con cada risa tuya, el arcoíris de Ramón se queda corto."
             </div>
         </section>
 
@@ -100,16 +131,28 @@
                 <img src="ramon_bg.png" style="width: 35vw; border-radius: 100px; transform: rotate(-8deg);">
             </div>
 
-            <div class="glass-card reveal" style="border-color: rgba(255, 0, 127, 0.2);">
-                <h2 class="pop-text" style="font-size: 4rem; margin-bottom: 2rem;">Tus Colores</h2>
-                <p style="font-size: 1.2rem; font-weight: 400; color: #fff;">
-                    Ramón encontró su color cuando dejó de tener miedo a brillar. <br><br>
-                    Tú eres esa canción que suena en mi cabeza cuando todo está en silencio, la que me recuerda que mis
-                    'colores verdaderos' son hermosos simplemente porque tú los ves.
+            <div class="glass-card reveal" style="border-color: rgba(0, 242, 255, 0.3);">
+                <h2 class="pop-text" style="font-size: 4rem; margin-bottom: 2rem;">Tus Verdaderos Colores</h2>
+                <div class="pop-buttons"
+                    style="display: flex; gap: 15px; justify-content: center; margin-bottom: 2rem;">
+                    <span class="pop-btn" onclick="popEffect('💖')" style="cursor: pointer; font-size: 2rem;">💖</span>
+                    <span class="pop-btn" onclick="popEffect('🎵')" style="cursor: pointer; font-size: 2rem;">🎵</span>
+                    <span class="pop-btn" onclick="popEffect('🌈')" style="cursor: pointer; font-size: 2rem;">🌈</span>
+                </div>
+                <p style="font-size: 1.2rem; font-weight: 400; color: #fff; line-height: 1.8;">
+                    Ramón nos enseñó que el gris no es falta de luz, sino un refugio para un corazón que ha sentido
+                    demasiado. Pero lo más valiente de él —y lo que más amo de ti— es esa capacidad de <strong>volver a
+                        cantar</strong> cuando el silencio parece eterno. <br><br>
+                    En un mundo que a veces parece perder su brillo, tú eres quien me recuerda que la música nunca
+                    muere. Eres mi color cuando todo es gris, y esa luz inesperada que brilla con más fuerza
+                    precisamente cuando el panorama es más oscuro.
                 </p>
+                <div style="margin-top: 2rem; font-style: italic; color: var(--pop-cyan); font-size: 1.1rem;">
+                    "Y veo tus colores verdaderos brillar en mí..."
+                </div>
                 <button class="pop-text" onclick="celebrate()"
-                    style="margin-top: 3rem; background: white; border: none; padding: 15px 40px; border-radius: 50px; color: black; cursor: pointer; font-size: 1.2rem;">
-                    ¡HORA DEL ABRAZO!
+                    style="margin-top: 2rem; background: white; border: none; padding: 15px 40px; border-radius: 50px; color: black; cursor: pointer; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);">
+                    ¡BRILLO ESPONTÁNEO!
                 </button>
             </div>
         </section>
@@ -117,12 +160,15 @@
         <!-- FINAL: OUR HISTORY -->
         <section id="our-story">
             <div class="reveal" style="text-align: center;">
-                <h2 class="magic-text" style="font-size: 3rem;">Nuestra Historia</h2>
+                <h2 class="magic-text" style="font-size: 3rem;">Nuestra Aventura Infinita</h2>
+                <div class="history-surprise" onclick="finalSurprise()"
+                    style="cursor: pointer; font-size: 5rem; margin: 2rem 0;">🎁</div>
                 <p class="poetic-quote" style="margin: 2rem 0; font-size: 1.8rem;">
-                    Más fuerte que un hechizo, <br> más brillante que un Arcoíris Pop.
+                    Más fuerte que un hechizo, <br> más espontánea que un abrazo de Troll.
                 </p>
                 <div class="glass-card" style="margin-top: 4rem; display: inline-block;">
-                    <p style="font-weight: 600; font-size: 1.5rem;">Te amo con toda mi alma. ❤️</p>
+                    <p style="font-weight: 600; font-size: 1.5rem;">Gracias por llenar mi mundo de esa locura tan
+                        hermosa. Te amo. ❤️</p>
                 </div>
             </div>
         </section>
