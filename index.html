@@ -36,11 +36,9 @@
         </button>
     </div>
 
-    <audio id="bg-music" loop preload="auto" crossorigin="anonymous">
-        <!-- Melodía Romántica: Piano suave y emotivo -->
-        <!-- RECOMENDACIÓN FINAL: Si este link falla en el futuro, descarga tu canción favorita de "True Colors", 
-             guárdala como "true_colors.mp3" en esta carpeta y cambia el src abajo a "true_colors.mp3" -->
-        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1801205e7e.mp3" type="audio/mpeg">
+    <audio id="bg-music" loop preload="auto">
+        <!-- El archivo local siempre es la mejor opción para evitar bloqueos 403 -->
+        <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Sound Effects: Alta fidelidad, orgánicos y mágicos -->
@@ -164,12 +162,9 @@
                 <h2 class="magic-text" style="font-size: 3rem;">Nuestra Aventura Infinita</h2>
                 <div class="history-surprise" onclick="finalSurprise()"
                     style="cursor: pointer; font-size: 5rem; margin: 2rem 0;">🎁</div>
-                <p class="poetic-quote" style="margin: 2rem 0; font-size: 1.8rem;">
-                    Más fuerte que un hechizo, <br> más espontánea que un abrazo de Troll.
-                </p>
-                <div class="glass-card" style="margin-top: 4rem; display: inline-block;">
-                    <p style="font-weight: 600; font-size: 1.5rem;">Gracias por llenar mi mundo de esa locura tan
-                        hermosa. Te amo. ❤️</p>
+                <div class="glass-card" style="margin: 4rem auto 0 auto; width: fit-content;">
+                    <p style="font-weight: 600; font-size: 1.5rem; margin: 0;">Gracias por llenar mi mundo de esa locura
+                        tan hermosa. Te amo. ❤️</p>
                 </div>
             </div>
         </section>

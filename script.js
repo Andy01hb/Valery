@@ -180,29 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. MUSIC LOADER
     let isPlaying = false;
 
-    // Asegurar carga inicial
-    music.load();
-
     musicBtn.addEventListener('click', () => {
         if (!isPlaying) {
-            // Recargar para asegurar que el link fresco de la CDN funcione
-            if (music.readyState === 0) music.load();
-
-            const playPromise = music.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    console.log("Melodía iniciada.");
-                    musicIcon.textContent = "⏸";
-                    musicBtn.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.4)";
-                    isPlaying = true;
-                }).catch(error => {
-                    console.error("Error de reproducción:", error);
-                    // Si falla el link externo, avisamos de forma más sutil
-                    musicIcon.textContent = "⚠️";
-                    console.log("El navegador o la red bloquearon el audio. Intenta de nuevo.");
-                });
-            }
+            music.play().then(() => {
+                console.log("Música iniciada perfectamente.");
+                musicIcon.textContent = "⏸";
+                musicBtn.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.4)";
+                isPlaying = true;
+            }).catch(error => {
+                console.error("Error al reproducir:", error);
+                alert("¡Falta el archivo de música! Asegúrate de haber guardado tu canción como 'musica.mp3' en la carpeta.");
+            });
         } else {
             music.pause();
             musicIcon.textContent = "🔊";
